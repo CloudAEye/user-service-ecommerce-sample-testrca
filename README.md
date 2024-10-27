@@ -39,13 +39,28 @@ pip install -r requirements.txt
 
 #### Without Docker
 
-Navigate to each service directory and run the application.
+Run the below command from the root path of the dir
 
 ```bash
 export FLASK_APP='src/app.py'
 export DATABASE_URL="mysql+pymysql://username:password@hostname:3306/defaultdb"
 flask run --port=5000
 ```
+
+> The application should be up and running on http://127.0.0.1:5000
+
+
+#### With Docker
+
+Run the below command from root path of the dir
+
+```bash
+export DATABASE_URL="mysql+pymysql://username:password@hostname:3306/defaultdb"
+docker build -t ecomm-user-service .
+docker run -e DATABASE_URL=$DATABASE_URL -p 5000:5000 ecomm-user-service
+```
+
+> The application should be up and running on http://127.0.0.1:5000
 
 ## API Endpoints
 
