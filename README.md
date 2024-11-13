@@ -1,4 +1,4 @@
-# Demo E-commerce App - User Service
+# Demo E-commerce App - User Services
 
 This project demonstrates a simple e-commerce system built using a microservices architecture. It consists of one of the service used by this demo app:
 **User Authentication Service**: Handles user registration and login, providing JWT tokens for authenticated sessions.
@@ -49,7 +49,6 @@ flask run --port=5000
 
 > The application should be up and running on http://127.0.0.1:5000
 
-
 #### With Docker
 
 Run the below command from root path of the dir
@@ -65,6 +64,7 @@ docker run -e DATABASE_URL=$DATABASE_URL -p 5000:5000 ecomm-user-service
 ## API Endpoints
 
 - **Register a User**
+
   - POST `/register`
   - Payload: `{"username": "testuser", "password": "password"}`
 
@@ -83,8 +83,8 @@ Payload:
 
 ```json
 {
-    "username": "testuser",
-    "password": "password"
+  "username": "testuser",
+  "password": "password"
 }
 ```
 
@@ -96,8 +96,8 @@ Payload:
 
 ```json
 {
-    "username": "testuser",
-    "password": "password"
+  "username": "testuser",
+  "password": "password"
 }
 ```
 
