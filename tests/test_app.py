@@ -39,7 +39,7 @@ class TestApp(unittest.TestCase):
 
     def test_03_flaky_test(self):
         # This test may fail due to network conditions or timeout
-        delay = random.uniform(0.3, 0.4)
+        delay = random.uniform(0.4, 0.5)
         try:
             result = subprocess.run(
                 ['ping', '-c', '1', 'example.com'],
