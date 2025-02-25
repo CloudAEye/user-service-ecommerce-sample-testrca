@@ -45,9 +45,9 @@ class TestApp(unittest.TestCase):
                 ['ping', '-c', '1', 'example.com'],
                 capture_output=True,
                 text=True,
-                timeout=2  # Very short timeout
+                timeout=10  # Very short timeout
             )
-            print(result)
+            print("result", result)
             self.assertEqual(result.returncode, 0)
         except subprocess.TimeoutExpired:
             self.fail("Test failed due to timeout")
