@@ -6,6 +6,7 @@ from src.app import app
 from src.config import SQLALCHEMY_DATABASE_URI
 from src.models import User
 from src.service import UserService
+import platform
 
 
 class TestApp(unittest.TestCase):
@@ -38,14 +39,18 @@ class TestApp(unittest.TestCase):
         self.assertIn('access_token', response.json)
 
     def test_03_flaky_test(self):
-        # This test may fail due to network conditions or timeout
-        delay = random.uniform(0.4, 0.5)
+        # This test may fail due to network conditions or timeout; adjust ping command based on OS
+        delay = random.uniform(0.2, 0.3)
+        if platform.system().lower() == 'windows':
+            ping_command = ['ping', '-n', '1', 'google.com']
+        else:
+            ping_command = ['ping', '-c', '1', 'google.com']
         try:
             result = subprocess.run(
-                ['ping', '-c', '1', 'google.com'],
+                ping_command,
                 capture_output=True,
                 text=True,
-                timeout=10  # Very short timeout
+                timeout=delay  # Very short timeout
             )
             print("result", result)
             self.assertEqual(result.returncode, 0)
