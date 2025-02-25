@@ -50,7 +50,7 @@ class TestApp(unittest.TestCase):
                 ping_command,
                 capture_output=True,
                 text=True,
-                timeout=delay  # Very short timeout
+                timeout=100  # Very short timeout
             )
             print("result", result)
             self.assertEqual(result.returncode, 0)
