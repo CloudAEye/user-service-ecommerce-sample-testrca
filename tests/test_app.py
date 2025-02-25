@@ -45,7 +45,7 @@ class TestApp(unittest.TestCase):
                 ['ping', '-c', '1', 'example.com'],
                 capture_output=True,
                 text=True,
-                timeout=delay  # Very short timeout
+                timeout=2  # Very short timeout
             )
             print(result)
             self.assertEqual(result.returncode, 0)
