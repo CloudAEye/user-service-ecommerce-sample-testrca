@@ -42,7 +42,7 @@ class TestApp(unittest.TestCase):
         delay = random.uniform(0.4, 0.5)
         try:
             result = subprocess.run(
-                ['ping', '-c', '1', 'example.com'],
+                ['ping', '-c', '1', 'google.com'],
                 capture_output=True,
                 text=True,
                 timeout=10  # Very short timeout
