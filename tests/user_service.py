@@ -53,7 +53,8 @@ class TestUserService(unittest.TestCase):
         with app.app_context():
             with self.assertRaises(Exception) as context:
                 self.service.login(data)
-        self.assertEqual(str(context.exception), 'Invalid username or password')
+        self.assertEqual(str(context.exception),
+                         'Invalid username or password')
 
     def test_login_invalid_password(self):
         # Attempt to log in with a username that does not exist
@@ -61,10 +62,12 @@ class TestUserService(unittest.TestCase):
         with app.app_context():
             with self.assertRaises(Exception) as context:
                 self.service.login(data)
-        self.assertEqual(str(context.exception), 'Invalid username or password')
+        self.assertEqual(str(context.exception),
+                         'Invalid username or password')
 
 
 if __name__ == '__main__':
     test_loader = unittest.TestLoader()
-    test_loader.sortTestMethodsUsing = None  # None to keep the method definition order
+    # None to keep the method definition order
+    test_loader.sortTestMethodsUsing = None
     unittest.TextTestRunner().run(test_loader.loadTestsFromTestCase(TestUserService))
