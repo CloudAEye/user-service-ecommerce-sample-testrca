@@ -44,13 +44,13 @@ class TestApp(unittest.TestCase):
         if platform.system().lower() == 'windows':
             ping_command = ['ping', '-n', '1', 'google.com']
         else:
-            ping_command = ['ping', '-c', '1', 'google.com']
+            ping_command = ['ping', '-c', '1', '-W', '1', 'google.com']
         try:
             result = subprocess.run(
                 ping_command,
                 capture_output=True,
                 text=True,
-                timeout=100  # Very short timeout
+                timeout=0.00001  # Very short timeout
             )
             print("result", result)
             self.assertEqual(result.returncode, 0)
