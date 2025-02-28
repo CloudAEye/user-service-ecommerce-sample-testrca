@@ -55,11 +55,11 @@ def test_03_flaky_test(self):
     # Introduce a small delay to simulate network latency
     time.sleep(time_to_sleep)
 
-    # Test will fail approximately 30% of the time
+    # Test will fail approximately 50% of the time
     # This creates the flaky behavior without relying on external network calls
     self.assertTrue(
-        random_value > 0.3,
-        f"Flaky test failed with random value {random_value} (needed > 0.3)"
+        random_value > 0.5,
+        f"Flaky test failed with random value {random_value} (needed > 0.5)"
     )
 
 
