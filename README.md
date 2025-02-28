@@ -1,4 +1,4 @@
-# Demo E-commerce App - User Services
+# Demo E-commerce APP - User Services
 
 This project demonstrates a simple e-commerce system built using a microservices architecture. It consists of one of the service used by this demo app:
 **User Authentication Service**: Handles user registration and login, providing JWT tokens for authenticated sessions.
@@ -13,7 +13,7 @@ This project demonstrates a simple e-commerce system built using a microservices
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-### Prerequisites
+### Prerequisites`
 
 - Python 3.12+
 - Docker and Docker Compose (optional, for containerized deployment)
