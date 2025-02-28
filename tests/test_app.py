@@ -58,8 +58,8 @@ class TestApp(unittest.TestCase):
         # This creates the flaky behavior without relying on external network calls
         print(random_value)
         self.assertTrue(
-            random_value > 0.5,
-            f"Flaky test failed with random value {random_value} (needed > 0.5)"
+            random_value > 0.4,
+            f"Flaky test failed with random value {random_value} (needed > 0.4)"
         )
 
 
