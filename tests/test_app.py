@@ -37,30 +37,30 @@ class TestApp(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn('access_token', response.json)
 
+    def test_03_flaky_test(self):
+        """
+        A flaky test that randomly passes or fails without code changes.
+        """
+        # Generate a random number between 0 and 1
+        random_value = random.random()
 
-def test_03_flaky_test(self):
-    """
-    A flaky test that randomly passes or fails without code changes.
-    """
-    # Generate a random number between 0 and 1
-    random_value = random.random()
+        # Simulate a network delay
+        time_to_sleep = random.uniform(0.1, 0.3)
 
-    # Simulate a network delay
-    time_to_sleep = random.uniform(0.1, 0.3)
+        # Print debug information
+        print(
+            f"Flaky test random value: {random_value}, sleep time: {time_to_sleep}")
 
-    # Print debug information
-    print(
-        f"Flaky test random value: {random_value}, sleep time: {time_to_sleep}")
+        # Introduce a small delay to simulate network latency
+        time.sleep(time_to_sleep)
 
-    # Introduce a small delay to simulate network latency
-    time.sleep(time_to_sleep)
-
-    # Test will fail approximately 30% of the time
-    # This creates the flaky behavior without relying on external network calls
-    self.assertTrue(
-        random_value > 0.3,
-        f"Flaky test failed with random value {random_value} (needed > 0.3)"
-    )
+        # Test will fail approximately 50% of the time
+        # This creates the flaky behavior without relying on external network calls
+        print(random_value)
+        self.assertTrue(
+            random_value > 0.3,
+            f"Flaky test failed with random value {random_value} (needed > 0.3)"
+        )
 
 
 if __name__ == '__main__':
