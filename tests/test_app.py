@@ -45,7 +45,7 @@ class TestApp(unittest.TestCase):
             ping_command = ['ping', '-n', '1', 'google.com']
         else:
             ping_command = ['ping', '-c', '1',
-                            '-W', '1', 'https://www.google.com']
+                            '-W', '1', 'www.google.com']
         try:
             result = subprocess.run(
                 ping_command,
