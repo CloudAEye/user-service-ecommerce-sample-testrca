@@ -40,19 +40,18 @@ class TestApp(unittest.TestCase):
         self.assertIn('access_token', response.json)
 
     def test_03_flaky_test(self):
-        # This test checks network connectivity using ping to a known reliable IP (Google DNS)
         delay = random.uniform(0.2, 0.3)
         if platform.system().lower() == 'windows':
-            ping_command = ['ping', '-n', '1', '8.8.8.8']
+            ping_command = ['ping', '-n', '1', 'google.com']
         else:
-            # For Linux systems, use a 1-second wait time and ping 8.8.8.8 to avoid DNS resolution issues
-            ping_command = ['ping', '-c', '1', '-W', '1', '8.8.8.8']
+            ping_command = ['ping', '-c', '1',
+                            '-W', '1', 'https://www.google.com']
         try:
             result = subprocess.run(
                 ping_command,
                 capture_output=True,
                 text=True,
-                timeout=10
+                timeout=10  # Very short timeout
             )
             print("result", result)
             self.assertEqual(result.returncode, 0)
