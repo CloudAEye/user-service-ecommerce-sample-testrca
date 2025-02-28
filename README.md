@@ -1,4 +1,4 @@
-# Demo E-commerce App - User Servicesss
+# Demo E-commerce App - User Servicess
 
 This project demonstrates a simple e-commerce system built using a microservices architecture. It consists of one of the service used by this demo app:
 **User Authentication Service**: Handles user registration and login, providing JWT tokens for authenticated sessions.
