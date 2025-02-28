@@ -1,3 +1,4 @@
+import os
 import random
 import unittest
 import subprocess
@@ -39,23 +40,29 @@ class TestApp(unittest.TestCase):
         self.assertIn('access_token', response.json)
 
     def test_03_flaky_test(self):
-        # This test may fail due to network conditions or timeout; adjust ping command based on OS
+        # This test checks network connectivity using ping to a known reliable IP (Google DNS)
         delay = random.uniform(0.2, 0.3)
         if platform.system().lower() == 'windows':
-            ping_command = ['ping', '-n', '1', 'google.com']
+            ping_command = ['ping', '-n', '1', '8.8.8.8']
         else:
-            ping_command = ['ping', '-c', '1', '-W', '10000', 'google.com']
+            # For Linux systems, use a 1-second wait time and ping 8.8.8.8 to avoid DNS resolution issues
+            ping_command = ['ping', '-c', '1', '-W', '1', '8.8.8.8']
         try:
             result = subprocess.run(
                 ping_command,
                 capture_output=True,
                 text=True,
-                timeout=10  # Very short timeout
+                timeout=10
             )
             print("result", result)
             self.assertEqual(result.returncode, 0)
         except subprocess.TimeoutExpired:
             self.fail("Test failed due to timeout")
+
+    # def test_randomly_flaky(self):
+    #     # Randomly pass or fail the test (50/50 chance)
+    #     self.assertTrue(random.choice(
+    #         [True, False]), "Flaky test randomly failed")
 
 
 if __name__ == '__main__':
